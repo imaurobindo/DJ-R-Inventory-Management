@@ -7,6 +7,7 @@ import { Navigation } from './components/Navigation';
 import { Logout } from './components/logout';
 import HomePage from './components/HomePage';
 import Register from './components/Register';
+import PinCodeMain from './components/PinCodeMain';
 import Dashboard from './pages/Dashboard';
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -16,6 +17,7 @@ import SideBarContainer from "./components/Layout/SideBarContainer"
 import Transactions from "./pages/Transactions";
 import "./assets/scss/app.scss"
 import reactLogo from './assets/react.svg'
+import MainAdmin from './components/MainAdmin';
 
 
 
@@ -62,7 +64,8 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="register/*" element={<Register />} />
               <Route path="/logout" element={<Logout />} />
-
+              <Route path="/pincodemain" element={<PinCodeMain />} />
+              <Route path="/mainadmin" element={<MainAdmin />} />
 
 
 

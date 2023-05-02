@@ -3,6 +3,9 @@ import { render } from "react-dom/client";
 import { v4 } from "uuid";
 import axios from "axios";
 import { Link } from 'react-router-dom';
+import Pincode from "./PinCodeMain";
+// import Pincodefetch from "./PinCodeFetch";
+
 
 class HomePage extends React.Component {
   state = { details: [] };
@@ -10,7 +13,9 @@ class HomePage extends React.Component {
   componentDidMount() {
     let data;
     axios
-      .get("http://localhost:8000/api/")
+      // .get("http://localhost:8000/api/")
+      .get("https://api.postalpincode.in/pincode/"+"757003")
+      
       .then((res) => {
         data = res.data;
         this.setState({
@@ -61,17 +66,21 @@ class HomePage extends React.Component {
         <Link to="login">Login</Link>
         <br />
         <Link to="register">Register</Link>
+        <br/>
+        <Link to="pincodemain">PinFetch</Link>
         <h1>HomePage</h1>
+        {/* <Pincode /> */}
+        {/* <Pincodefetch /> */}
         <header>Data Generated From Django</header>
         <hr></hr>
         <img src=""></img>
         {this.state.details.map((output, index) => (
           <h1 key={v4()}>
-            {output.product_image + " " + output.brand + " " + output.product_name + " Rs." + output.product_price}{" "}
+            {output.Status + " " + output.Message}{" "}
           </h1>
         ))}
         {this.state.details.map((output, index) => (
-          <h1 key={v4()}>{output.ratings} </h1>
+          <h1 key={v4()}>{output.PostOffice.map((PostOffice, index) => ( <p>{PostOffice.Name + ", " + PostOffice.District + ", " + PostOffice.State + ", " + PostOffice.Country + ", " + PostOffice.Pincode}</p>))} </h1>
         ))}
 
         {/* {this.state.details.map((output, index,) => (
