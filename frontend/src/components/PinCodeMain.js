@@ -2,6 +2,9 @@ import {useState} from 'react';
 import PinCodeFetch from './PinCodeFetch';
 import PickupAddress from './PickupAddress';
 
+
+import PinCodeFetch1 from './PinCodeFetch1';
+
 const PincodeMain = () => {
   const [pincode, setPincode] = useState('');
 
@@ -22,13 +25,14 @@ const PincodeMain = () => {
       />
 
       <h2>Pincode: {pincode}</h2>
+      
       {pincode.length === 6 && (
-        <PinCodeFetch pincode={pincode} />
+        <PinCodeFetch1 pincode={pincode} />
             
         
       )}
 
-      <PickupAddress pincode={pincode} />
+      
     </div>
   );
 };

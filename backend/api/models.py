@@ -5,8 +5,8 @@ import uuid
 # Create your models here.
 class SellerAddress(models.Model):
     pincode = models.CharField(max_length=50)
-    area = models.CharField(max_length=150)
-    city = models.CharField(max_length=150)
+    postoffice = models.CharField(max_length=150)
+    town_or_city = models.CharField(max_length=150)
     district = models.CharField(max_length=150)
     state = models.CharField(max_length=150)
     country = models.CharField(max_length=150)

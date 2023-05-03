@@ -1,5 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
+import props from 'prop-types';
+import pincode from './PinCodeMain';
 //import CSRFToken from './csrftoken';
 
 
@@ -53,13 +55,17 @@ import React, { useState } from 'react'
 
 // }
 
-const PickupAddress = () => {
+
+const PickupAddress = (props) => {
+    
     const [state, setState] = useState({
         pincode: "",
-        area: "",
-        city: "",
+        postoffice: "",
+        town_or_city: "",
         district: "",
         state: "",
+        country: "",
+        street_address: "",
     });
 
     const handleChange = (e) => {
@@ -69,15 +75,20 @@ const PickupAddress = () => {
             [e.target.name]: value
         });
     };
+    
 
     const handleSubmit = (e) => {
+        
         e.preventDefault();
         const userData = {
             pincode: state.pincode,
-            area: state.area,
-            city: state.city,
+            postoffice: state.postoffice,
+            town_or_city: state.town_or_city,
             district: state.district,
             state: state.state,
+            country: state.country,
+            street_address: state.street_address,
+
         };
         axios.post("http://localhost:8000/selleraddressapi/", userData).then((response) => {
             //<CSRFToken />
@@ -86,6 +97,7 @@ const PickupAddress = () => {
     };
 
     return (
+        
         <div>
             <style
                 dangerouslySetInnerHTML={{
@@ -94,33 +106,42 @@ const PickupAddress = () => {
                 }}
             />
 
-            <h1>Pincode Data Will Be Fetched Here</h1>
+            <h1>Enter other address details</h1>
             <hr />
             <form onSubmit={handleSubmit} method='post'>
                 <label htmlFor="pincode">
-                    Pincode
+                    {/* Pincode */}
                     <input
-                        type="text"
+                        type="hidden"
                         name="pincode"
-                        value={state.pincode}
+                        value={state.pincode = props.pincode}
                         onChange={handleChange}
                     />
                 </label>
-                <label htmlFor="area">
-                    Area
+                <label htmlFor="street_address">
+                    Enter Your Street Address
                     <input
                         type="text"
-                        name="area"
-                        value={state.area}
+                        name="street_address"
+                        value={state.street_address}
                         onChange={handleChange}
                     />
                 </label>
-                <label htmlFor="city">
-                    City
+                <label htmlFor="postoffice">
+                    {/* PostOffice */}
+                    <input
+                        type="hidden"
+                        name="postoffice"
+                        value={state.postoffice = props.area[0].Name}
+                        onChange={handleChange}
+                    />
+                </label>
+                <label htmlFor="town_or_city">
+                    Town / City
                     <input
                         type="text"
-                        name="city"
-                        value={state.city}
+                        name="town_or_city"
+                        value={state.town_or_city = props.area[0].Block}
                         onChange={handleChange}
                     />
                 </label>
@@ -129,7 +150,7 @@ const PickupAddress = () => {
                     <input
                         type="text"
                         name="district"
-                        value={state.district}
+                        value={state.district = props.area[0].District}
                         onChange={handleChange}
                     />
                 </label>
@@ -138,7 +159,16 @@ const PickupAddress = () => {
                     <input
                         type="text"
                         name="state"
-                        value={state.state}
+                        value={state.state = props.area[0].State}
+                        onChange={handleChange}
+                    />
+                </label>
+                <label htmlFor="country">
+                    Country
+                    <input
+                        type="hidden"
+                        name="country"
+                        value={state.country = props.area[0].Country}
                         onChange={handleChange}
                     />
                 </label>
@@ -150,3 +180,6 @@ const PickupAddress = () => {
 };
 
 export default PickupAddress;
+
+
+

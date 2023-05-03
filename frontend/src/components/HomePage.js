@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { render } from "react-dom/client";
+import React from "react";
+//import { render } from "react-dom/client";
 import { v4 } from "uuid";
 import axios from "axios";
 import { Link } from 'react-router-dom';
-import Pincode from "./PinCodeMain";
+//import Pincode from "./PinCodeMain";
 // import Pincodefetch from "./PinCodeFetch";
 
 
@@ -14,7 +14,7 @@ class HomePage extends React.Component {
     let data;
     axios
       // .get("http://localhost:8000/api/")
-      .get("https://api.postalpincode.in/pincode/"+"757003")
+      .get("https://api.postalpincode.in/pincode/757003")
       
       .then((res) => {
         data = res.data;
@@ -73,7 +73,7 @@ class HomePage extends React.Component {
         {/* <Pincodefetch /> */}
         <header>Data Generated From Django</header>
         <hr></hr>
-        <img src=""></img>
+        
         {this.state.details.map((output, index) => (
           <h1 key={v4()}>
             {output.Status + " " + output.Message}{" "}

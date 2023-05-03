@@ -1,22 +1,22 @@
 import './App.css';
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, } from 'react-router-dom'
 import { Login } from "./components/login";
-import { Home } from "./components/Home";
+//import { Home } from "./components/Home";
 import { Navigation } from './components/Navigation';
 import { Logout } from './components/logout';
 import HomePage from './components/HomePage';
 import Register from './components/Register';
 import PinCodeMain from './components/PinCodeMain';
 import Dashboard from './pages/Dashboard';
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import Header from "./components/Layout/Header"
+//import { fas } from '@fortawesome/free-solid-svg-icons'
+//import { library } from '@fortawesome/fontawesome-svg-core'
+//import Header from "./components/Layout/Header"
 import Footer from "./components/Layout/Footer"
 import SideBarContainer from "./components/Layout/SideBarContainer"
 import Transactions from "./pages/Transactions";
 import "./assets/scss/app.scss"
-import reactLogo from './assets/react.svg'
+//import reactLogo from './assets/react.svg'
 import MainAdmin from './components/MainAdmin';
 
 
