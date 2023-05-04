@@ -1,6 +1,7 @@
 // Import the react JS packages
 import {useEffect, useState} from "react";
 import axios from "axios";
+import HomeNav from "./HomeNav";
 // Define the Login function.
 export const Home = () => {
      const [message, setMessage] = useState('');
@@ -26,5 +27,6 @@ export const Home = () => {
      return (
         <div className="form-signin mt-5 text-center">
           <h3> Hi </h3>
+          <HomeNav />
         </div>);
 }

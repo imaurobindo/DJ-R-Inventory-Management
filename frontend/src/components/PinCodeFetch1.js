@@ -33,15 +33,16 @@ function PinCodeFetch1({ pincode }) {
                     <p key={v4()}>{PostOffice.Name + ", " + PostOffice.District + ", " + PostOffice.State + ", " + PostOffice.Country + ", " + PostOffice.Pincode}</p>
                 ))}</h1>
             ))} */}
-            <div>
+            <div className='select-postoffice'>
                 <p>Select your Post Office:</p>
                 <select value={index} onChange={(e) => setIndex(parseInt(e.target.value))}>
                     {data[0].PostOffice.map((_, i) => (
                         <option key={i} value={i}>{data[0].PostOffice[i].Name}</option>
                     ))}
                 </select>
-                <PickupAddress pincode={pincode} area={data.map((output, i) => (output.PostOffice[index]))} />
+                
             </div>
+            <PickupAddress pincode={pincode} area={data.map((output, i) => (output.PostOffice[index]))} />
         </div>
     );
 }

@@ -125,3 +125,10 @@ body {
 /* .navbar.bg {
   color: blue;
 } */
+
+
+.Footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}

@@ -1,86 +1,49 @@
-import './App.css';
-import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, } from 'react-router-dom'
-import { Login } from "./components/login";
-//import { Home } from "./components/Home";
+import { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Login } from './components/login';
+import { Home } from './components/Home';
+import Dashboard from './components/Dashboard';
 import { Navigation } from './components/Navigation';
 import { Logout } from './components/logout';
-import HomePage from './components/HomePage';
-import Register from './components/Register';
-import PinCodeMain from './components/PinCodeMain';
-import Dashboard from './pages/Dashboard';
-//import { fas } from '@fortawesome/free-solid-svg-icons'
-//import { library } from '@fortawesome/fontawesome-svg-core'
-//import Header from "./components/Layout/Header"
-import Footer from "./components/Layout/Footer"
-import SideBarContainer from "./components/Layout/SideBarContainer"
-import Transactions from "./pages/Transactions";
-import "./assets/scss/app.scss"
-//import reactLogo from './assets/react.svg'
-import MainAdmin from './components/MainAdmin';
-
-
+import PincodeMain from './components/PinCodeMain';
+import Footer from './components/Layout/Footer';
+import './App.css';
+import sunIcon from './assets/sun.svg';
+import moonIcon from './assets/moon.svg';
 
 function App() {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
-  const toggleTheme = () => {
-    if (theme === "light") {
-      setTheme("dark");
-    } else {
-      setTheme("light");
-    }
-  };
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
   useEffect(() => {
-    localStorage.setItem("theme", theme);
-    document.body.className = theme;
-  }, [theme]);
+    const storedDarkMode = localStorage.getItem('isDarkMode');
+    if (storedDarkMode === 'true') {
+      setIsDarkMode(true);
+    }
+  }, []);
+
+  const toggleDarkMode = () => {
+    const newIsDarkMode = !isDarkMode;
+    setIsDarkMode(newIsDarkMode);
+    localStorage.setItem('isDarkMode', newIsDarkMode.toString());
+  };
 
   return (
-
     <BrowserRouter>
-      {/* <Header /> */}
-      <SideBarContainer />
-      <Navigation></Navigation>
-      <div className="main-content">
-        <div className="page-content">
-          <div className={`App ${theme}`}>
-            <div className="form-check form-switch">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                id="flexSwitchCheckDefault"
-                onClick={toggleTheme}
-              />
-              <label
-                className="form-check-label"
-                htmlFor="flexSwitchCheckDefault"
-              >
-                Enable Dark Mode
-              </label>
-            </div>
-            </div>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="register/*" element={<Register />} />
-              <Route path="/logout" element={<Logout />} />
-              <Route path="/pincodemain" element={<PinCodeMain />} />
-              <Route path="/mainadmin" element={<MainAdmin />} />
-
-
-
-
-              <Route path="/Dashboard" element={<Dashboard />} />
-              <Route path="/transactions" element={<Transactions />} />
-
-
-
-            </Routes>
-          </div>
+      <div className={isDarkMode ? 'dark-mode' : ''}>
+        <div className="toggle-container" onClick={toggleDarkMode}>
+          <img src={isDarkMode ? sunIcon : moonIcon} alt="toggle" />
         </div>
-        <Footer />
+        <Navigation></Navigation>
+        <Routes>
+          <Route path="dashboard/" element={<Dashboard />} />
+          <Route path="dashboard/pincodemain" element={<PincodeMain />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<Logout />} />
+        </Routes>
+        
+      </div>
+      <Footer />
     </BrowserRouter>
-    
   );
 }
 

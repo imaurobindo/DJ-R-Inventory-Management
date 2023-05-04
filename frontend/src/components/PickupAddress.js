@@ -164,7 +164,7 @@ const PickupAddress = (props) => {
                     />
                 </label>
                 <label htmlFor="country">
-                    Country
+                    {/* Country */}
                     <input
                         type="hidden"
                         name="country"

@@ -28,7 +28,7 @@ DEBUG = True
 
 # ALLOWED_HOSTS = ['http://localhost:3000','localhost','http://localhost:8000/token/','127.0.0.1','192.168.107.1','192.168.43.64',]
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['localhost','http://localhost:3000', 'http://localhost:8000']
 
 
 # Application definition

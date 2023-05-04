@@ -22,9 +22,9 @@ urlpatterns = [
     path('token/', 
           jwt_views.TokenObtainPairView.as_view(), 
           name ='token_obtain_pair'),
-     path('token/refresh/', 
+    path('token/refresh/', 
           jwt_views.TokenRefreshView.as_view(), 
           name ='token_refresh'),
-          path('', include('authentification.urls')),
+    path('', include('authentification.urls')),
     path("", include('api.urls')),
 ]
