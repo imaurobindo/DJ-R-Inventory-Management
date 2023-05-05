@@ -2,6 +2,7 @@
     background-color: #f8f9fa !important;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.2), 0 2px 10px 0 rgba(0,0,0,.15) !important;
     padding: 20px !important;
+    border-radius: 4px;
   }
   
   .navbar-toggler {
@@ -18,12 +19,31 @@
   .navbar-nav .nav-link {
     padding: 10px 20px;
     font-size: 16px;
+    font-weight: 500;
     color: #343a40;
     transition: color 0.3s ease-in-out;
   }
   
   .navbar-nav .nav-link:hover {
-    color: #007bff;
+    color: #fbff00;
+    font-weight: 600;
+    background-image: linear-gradient(to right, #00b1be, #0077ff);
+    border-radius: 4px;
+    padding: 1px;
+    transition: all 0.2s ease-in-out;
+    text-shadow: 1px 1px 1px #000;
+  }
+  
+  
+
+  .navbar-brand:hover {
+    color: #fbff00;
+    font-weight: 600;
+    background-image: linear-gradient(to right, #00b1be, #0077ff);
+    border-radius: 4px;
+    padding: 4px;
+    transition: all 0.2s ease-in-out;
+    text-shadow: 1px 1px 1px #000;
   }
   
   .navbar-nav .nav-link svg {

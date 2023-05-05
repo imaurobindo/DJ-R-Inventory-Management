@@ -40,7 +40,7 @@ const PincodeMain = () => {
   };
 
   return (
-    <div>
+    <div className='pin-input-parent'>
       <div className='pincode-input'>
         <input
           type="text"
@@ -50,7 +50,7 @@ const PincodeMain = () => {
           value={pincode}
         />
 
-        <h2>Enter Your Pincode:</h2>
+        <h2>To Continue Enter Your Pincode:</h2>
 
        
 

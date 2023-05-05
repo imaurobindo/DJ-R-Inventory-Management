@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import HomePage from "./HomePage";
+import UserProfile from "./UserProfile";
 
 const Dashboard = () => {
 	const [message, setMessage] = useState('');
@@ -27,8 +28,12 @@ const Dashboard = () => {
 	}, []);
 	return (
 		<div>
-			This is Dashboard<br />
-			<HomePage />
+			<br />
+			<UserProfile />
+
+			
+			
+			
 
 		</div>
 

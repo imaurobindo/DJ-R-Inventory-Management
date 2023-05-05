@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Product, Seller, Warehouse, Category, SubCategory, SubSubCategory, SellerAddress
+from .models import Product, Seller, Warehouse, Category, SubCategory, SubSubCategory, SellerAddress, MyUser
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -24,7 +24,7 @@ class WarehousesSerializer(serializers.ModelSerializer):
 class AuthUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('username', 'email', 'password')
+        fields = ('username', 'first_name', 'email', 'password', 'is_active', 'is_staff')
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -47,3 +47,9 @@ class SellerAddressSerializer(serializers.ModelSerializer):
     class Meta:
         model = SellerAddress
         fields = ('__all__')
+
+
+class MyUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MyUser
+        fields = ('username', 'email', 'password', 'is_live', 'first_name')

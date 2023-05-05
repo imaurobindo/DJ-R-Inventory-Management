@@ -1,62 +1,15 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-//import CSRFToken from './csrftoken';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { PBKDF2 } from 'crypto-js';
+import CryptoJS from 'crypto-js';
+import { HmacSHA256 } from 'crypto-js/hmac-sha256';
 
-
-
-
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <div>
-//         <h1>Invois</h1>
-//       </div>
-//     </div>
-//   );
-// }
-
-// class App extends React.Component {
-
-//   state = { details: [], }
-
-//   componentDidMount() {
-
-//     let data;
-//     axios.get('http://localhost:8000/')
-//     .then(res => {
-//       data = res.data;
-//       this.setState({
-//         details: data
-//       });
-//     })
-//     .catch(err => { })
-//   }
-
-
-//   render() {
-//     return (
-//       <div>
-//         <header>Data Generated From Django</header>
-//         <hr></hr>
-//         {this.state.details.map((output, id) => (
-//           <div>
-//             <h2>{output.first_name}</h2>
-//             <h3>{output.last_name}</h3>
-//             <br></br>
-
-//           </div>
-//         ) )}
-//       </div>
-//     )
-//   }
-
-
-// }
 
 const Register = () => {
+
+    //const hash = CryptoJS.HmacSHA256(message, secret);
 
     const notify = () => toast("You Have Been Successfully Registered");
 
@@ -64,6 +17,7 @@ const Register = () => {
         username: "",
         email: "",
         password: "",
+        password1: "",
     });
 
     const handleChange = (e) => {
@@ -76,11 +30,21 @@ const Register = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const salt = "myrandomsalt"; // replace with a random salt value
+        const iterations = 260000; // choose a suitable number of iterations
+        const hashBits = 256; // choose the desired hash length
+        const hash = PBKDF2(state.password, salt, {
+            keySize: hashBits / 32,
+            iterations: iterations,
+            hasher: PBKDF2.lib.HmacSHA256
+        }).toString(PBKDF2.enc.Base64);
+
         const userData = {
             username: state.username,
             email: state.email,
-            password: state.password,
+            password: `pbkdf2_sha256$${iterations}$${salt}$${hash}`,
         };
+
         axios.post(`http://${window.location.hostname}:8000/registerapi/`, userData)
             .then((response) => {
                 if (response.status === 201) {
@@ -94,6 +58,8 @@ const Register = () => {
                 console.log(error);
             });
     };
+
+
 
     return (
         <div>

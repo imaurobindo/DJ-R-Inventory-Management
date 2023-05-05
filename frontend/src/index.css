@@ -78,6 +78,7 @@ body {
 
 
 
+
 .flexSwitchCheckDefault {
   cursor: pointer;
 }
@@ -127,8 +128,3 @@ body {
 } */
 
 
-.Footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}

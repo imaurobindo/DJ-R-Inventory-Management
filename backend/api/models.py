@@ -1,5 +1,7 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 import uuid
+#from .manager import UserManager
 
 
 # Create your models here.
@@ -106,3 +108,54 @@ class Product(models.Model):
     class Meta:
         db_table = "all_products"
 
+
+# class User(AbstractUser):
+#     phone_number = models.CharField(max_length=13, unique=True)
+#     is_phone_verified = models.BooleanField(default=False)
+#     otp = models.CharField(max_length=6)
+#     is_user_live = models.BooleanField(default=False)
+
+#     USERNAME_FIELD = 'phone_number'
+#     REQUIRED_FIELDS = []
+#     objects = UserManager()
+
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.hashers import make_password
+
+class MyUserManager(BaseUserManager):
+    def create_user(self, email, username, first_name, is_live, password=None):
+        if not email:
+            raise ValueError('Users must have an email address')
+
+        user = self.model(
+            email=self.normalize_email(email),
+            username=username,
+            first_name=first_name,
+            password=make_password(password),
+            is_live=is_live,
+
+        )
+
+        user.save(using=self._db)
+        return user
+
+class MyUser(AbstractBaseUser):
+    email = models.EmailField(verbose_name='email address', max_length=255, unique=True)
+    username = models.CharField(max_length=30, unique=True)
+    password = models.CharField(max_length=128)
+    is_live = models.BooleanField(default=False)
+    first_name = models.CharField(verbose_name='first name', max_length=255, default='')
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username', 'is_live', 'first_name']
+
+    objects = MyUserManager()
+
+    def __str__(self):
+        return self.email
+
+    # def has_perm(self, perm, obj=None):
+    #     return True
+
+    # def has_module_perms(self, app_label):
+    #     return True

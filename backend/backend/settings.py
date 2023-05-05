@@ -26,9 +26,10 @@ SECRET_KEY = 'django-insecure-ve$lm1yxmmv13$qtt85m2eb9-j&bc+5jxv14sisbe=c4&0ieb3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 # ALLOWED_HOSTS = ['http://localhost:3000','localhost','http://localhost:8000/token/','127.0.0.1','192.168.107.1','192.168.43.64',]
 
-ALLOWED_HOSTS = ['localhost','http://localhost:3000', 'http://localhost:8000']
+ALLOWED_HOSTS = ['localhost','http://localhost:3000', 'http://localhost:8000', '192.168.43.64']
 
 
 # Application definition
@@ -161,3 +162,11 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.AllowAllUsersModelBackend', 'django.contrib.auth.backends.AllowAllUsersRemoteUserBackend']
+
+
+PASSWORD_HASHERS = [
+    "django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher",
+]

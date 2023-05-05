@@ -7,9 +7,12 @@ import { Navigation } from './components/Navigation';
 import { Logout } from './components/logout';
 import PincodeMain from './components/PinCodeMain';
 import Footer from './components/Layout/Footer';
+import LoadingBar from './components/LoadingBar'; // import the LoadingBar component
 import './App.css';
 import sunIcon from './assets/sun.svg';
 import moonIcon from './assets/moon.svg';
+import Register from './components/Register';
+import Invois from './components/Invois';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -18,6 +21,8 @@ function App() {
     const storedDarkMode = localStorage.getItem('isDarkMode');
     if (storedDarkMode === 'true') {
       setIsDarkMode(true);
+    } else {
+      setIsDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
     }
   }, []);
 
@@ -34,13 +39,15 @@ function App() {
           <img src={isDarkMode ? sunIcon : moonIcon} alt="toggle" />
         </div>
         <Navigation></Navigation>
+        <LoadingBar /> 
         <Routes>
           <Route path="dashboard/" element={<Dashboard />} />
           <Route path="dashboard/pincodemain" element={<PincodeMain />} />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/" element={<Invois />} />
         </Routes>
-        
       </div>
       <Footer />
     </BrowserRouter>

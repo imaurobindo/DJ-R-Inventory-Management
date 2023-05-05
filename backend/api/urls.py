@@ -1,6 +1,6 @@
 
 from django.urls import path
-from .views import ProductsView, AuthUserView, SellersView, WarehousesView, CategoryView, SubCategoryView, SubSubCategoryView, SellerAddressView
+from .views import ProductsView, AuthUserView, SellersView, WarehousesView, CategoryView, SubCategoryView, SubSubCategoryView, SellerAddressView, current_user, MyUserView
 from api import views
 
 urlpatterns = [
@@ -15,4 +15,7 @@ urlpatterns = [
     path('subcategoryapi/', SubCategoryView.as_view()),
     path('subsubcategoryapi/', SubSubCategoryView.as_view()),
     path('selleraddressapi/', SellerAddressView.as_view()),
+    path('current_user/', current_user),
+    path('registermyuserapi/', MyUserView.as_view()),
+
 ]

@@ -7,25 +7,25 @@ export const Login = () => {
      const [password, setPassword] = useState('');
      // Create the submit method.
      const submit = async e => {
-          e.preventDefault();
-          const user = {
-                username: username,
-                password: password
-               };
-          // Create the POST requuest
-          const {data} = await axios.post('http://localhost:8000/token/',
-                         user ,{headers: 
-                        {'Content-Type': 'application/json'},
-                         withCredentials: false});
-
-         // Initialize the access & refresh token in localstorage.      
-         localStorage.clear();
-         localStorage.setItem('access_token', data.access);
-         localStorage.setItem('refresh_token', data.refresh);
-         axios.defaults.headers.common['Authorization'] = 
-                                         `Bearer ${data['access']}`;
-         window.location.href = '/dashboard'
+      e.preventDefault();
+      const user = {
+        username: username,
+        password: password
+      };
+      const { data } = await axios.post(`http://${window.location.hostname}:8000/token/`, user, {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        withCredentials: false
+      });
+    
+      localStorage.clear();
+      localStorage.setItem('access_token', data.access);
+      localStorage.setItem('refresh_token', data.refresh);
+      axios.defaults.headers.common['Authorization'] = `Bearer ${data['access']}`;
+      window.location.href = '/dashboard'
     }
+    
     return(
       <div className="Auth-form-container">
         <form className="Auth-form" onSubmit={submit}>
@@ -52,7 +52,7 @@ export const Login = () => {
             </div>
             <div className="d-grid gap-2 mt-3">
               <button type="submit" 
-                 className="btn btn-primary">Submit</button>
+                 className="btn btn-primary">Login</button>
             </div>
           </div>
        </form>

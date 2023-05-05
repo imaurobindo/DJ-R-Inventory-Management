@@ -1,7 +1,5 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import props from 'prop-types';
-import pincode from './PinCodeMain';
 //import CSRFToken from './csrftoken';
 
 
@@ -55,17 +53,11 @@ import pincode from './PinCodeMain';
 
 // }
 
-
-const PickupAddress = (props) => {
-    
+const Register = () => {
     const [state, setState] = useState({
-        pincode: "",
-        postoffice: "",
-        town_or_city: "",
-        district: "",
-        state: "",
-        country: "",
-        street_address: "",
+        username: "",
+        email: "",
+        password: "",
     });
 
     const handleChange = (e) => {
@@ -75,29 +67,21 @@ const PickupAddress = (props) => {
             [e.target.name]: value
         });
     };
-    
 
     const handleSubmit = (e) => {
-        
         e.preventDefault();
         const userData = {
-            pincode: state.pincode,
-            postoffice: state.postoffice,
-            town_or_city: state.town_or_city,
-            district: state.district,
-            state: state.state,
-            country: state.country,
-            street_address: state.street_address,
-
+            username: state.username,
+            email: state.email,
+            password: state.password,
         };
-        axios.post(`http://${window.location.hostname}:8000/selleraddressapi/`, userData).then((response) => {
+        axios.post(`http://${window.location.hostname}:8000/registerapi/`, userData).then((response) => {
             //<CSRFToken />
             console.log(response.status, response.data);
         });
     };
 
     return (
-        
         <div>
             <style
                 dangerouslySetInnerHTML={{
@@ -106,80 +90,50 @@ const PickupAddress = (props) => {
                 }}
             />
 
-            <h1>Enter other address details</h1>
-            {/* <hr className='hrs'/> */}
+            <h1>Register or Create new account</h1>
+            {/* <hr /> */}
             <form onSubmit={handleSubmit} method='post'>
-                <label htmlFor="pincode">
-                    {/* Pincode */}
-                    <input
-                        type="hidden"
-                        name="pincode"
-                        value={state.pincode = props.pincode}
-                        onChange={handleChange}
-                    />
-                </label>
-                <label htmlFor="street_address">
-                    Enter Your Street Address
+                <label htmlFor="username">
+                    Username
                     <input
                         type="text"
-                        name="street_address"
-                        value={state.street_address}
+                        name="username"
+                        value={state.username}
                         onChange={handleChange}
                     />
                 </label>
-                <label htmlFor="postoffice">
-                    {/* PostOffice */}
-                    <input
-                        type="hidden"
-                        name="postoffice"
-                        value={state.postoffice = props.area[0].Name}
-                        onChange={handleChange}
-                    />
-                </label>
-                <label htmlFor="town_or_city">
-                    Town / City
+                <label htmlFor="email">
+                    Email
                     <input
                         type="text"
-                        name="town_or_city"
-                        value={state.town_or_city = props.area[0].Block}
+                        name="email"
+                        value={state.email}
                         onChange={handleChange}
                     />
                 </label>
-                <label htmlFor="district">
-                    District
+                <label htmlFor="password">
+                    Password
                     <input
                         type="text"
-                        name="district"
-                        value={state.district = props.area[0].District}
+                        name="password"
+                        value={state.password}
                         onChange={handleChange}
                     />
                 </label>
-                <label htmlFor="state">
-                    State
+                <label htmlFor="password1">
+                    Confirm Password
                     <input
                         type="text"
-                        name="state"
-                        value={state.state = props.area[0].State}
+                        name="password1"
+                        value={state.password1}
                         onChange={handleChange}
                     />
                 </label>
-                <label htmlFor="country">
-                    {/* Country */}
-                    <input
-                        type="hidden"
-                        name="country"
-                        value={state.country = props.area[0].Country}
-                        onChange={handleChange}
-                    />
-                </label>
-                <button type="submit">Submit</button>
+                <button type="submit">Register</button>
             </form>
             <br></br>
         </div>
     );
 };
 
-export default PickupAddress;
-
-
-
+export default Register;
