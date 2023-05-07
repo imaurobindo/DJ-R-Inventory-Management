@@ -4,6 +4,7 @@ import logo from '../assets/images/Logo.png';
 export default function InventoryManagementSystem() {
   return (
     <div className="landing-page">
+      <div className='landing-page-inner'>
       <img src={logo} alt="Company logo" width={200} />
       <h1>Welcome to INVOIS</h1>
       <p>The leading inventory management solution for businesses of all sizes.</p>
@@ -17,6 +18,7 @@ export default function InventoryManagementSystem() {
       <br/>
       <p>With our user-friendly interface and easy-to-use tools, you'll be able to manage your inventory with ease and efficiency. Our system is also customizable to meet your specific needs, so you can tailor it to fit your unique business requirements.</p>
       <br/><button className="btn btn-secondary">Start your free trial</button>
+      </div>
     </div>
   );
 }

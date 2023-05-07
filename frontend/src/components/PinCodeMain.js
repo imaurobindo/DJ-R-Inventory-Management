@@ -4,11 +4,19 @@ import PickupAddress from './PickupAddress';
 import { useEffect, useState } from "react";
 import axios from "axios";
 import HomePage from "./HomePage";
+import { useNavigate } from 'react-router-dom';
 
 
 import PinCodeFetch1 from './PinCodeFetch1';
 
 const PincodeMain = () => {
+
+  const navigate = useNavigate();
+
+  const handlePinCodeResponse = (responseData) => {
+    console.log(responseData); // do something with the response data
+  }
+
   const [message, setMessage] = useState('');
   useEffect(() => {
     if (localStorage.getItem('access_token') === null) {
@@ -42,6 +50,7 @@ const PincodeMain = () => {
   return (
     <div className='pin-input-parent'>
       <div className='pincode-input'>
+      <h2>To Continue Enter Your Pincode:</h2>
         <input
           type="text"
           id="pincode"
@@ -50,7 +59,7 @@ const PincodeMain = () => {
           value={pincode}
         />
 
-        <h2>To Continue Enter Your Pincode:</h2>
+        
 
        
 

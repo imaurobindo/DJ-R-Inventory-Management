@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { v4 } from "uuid";
 import PickupAddress from './PickupAddress';
 import props from 'prop-types';
+import { ToastContainer, toast } from 'react-toastify';
 
 function PinCodeFetch1({ pincode }) {
     const [data, setData] = useState(null);
     const [index, setIndex] = useState(0); // initial value of index is 0
+    const [isPincodeValid, setIsPincodeValid] = useState(true); // initial value is true`
 
     useEffect(() => {
         async function fetchData() {
@@ -17,13 +19,32 @@ function PinCodeFetch1({ pincode }) {
         fetchData();
     }, [pincode]);
 
+
+    useEffect(() => {
+        if (data) {
+            let Stat = data.map((output, i) => (output.Status));
+            if (Stat != "Success" && isPincodeValid) {
+                setIsPincodeValid(false);
+                toast.error("Invalid Pincode!");
+            }
+
+            if (Stat == "Success" && isPincodeValid) {
+                setIsPincodeValid(false);
+                toast.success(" Pincode Data Fetched Successfully!");
+            }
+        }
+    }, [data, isPincodeValid]);
+
+    
+
     if (!data) {
         return <div>Loading...</div>;
+        
     }
 
     let Stat=data.map((output, i) => (output.Status))
     if (Stat != "Success") {
-        return <div>Invalid Pincode</div>
+        return <h2>invalid pincode</h2>
     }
 
     return (

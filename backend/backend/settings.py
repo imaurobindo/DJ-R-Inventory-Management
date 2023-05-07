@@ -168,5 +168,7 @@ AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.AllowAllUsersModelBacke
 
 
 PASSWORD_HASHERS = [
-    "django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher",
+    "django.contrib.auth.hashers.PBKDF2PasswordHasher",
+    
+
 ]

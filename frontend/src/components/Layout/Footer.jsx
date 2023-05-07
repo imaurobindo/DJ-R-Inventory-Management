@@ -7,8 +7,8 @@ const Footer = () => {
       <div className="ftfx">
         <Container fluid={true}>
           <Row>
-            <Col md={6}>{new Date().getFullYear()} © INVOIS.</Col>
-            <Col md={6}>
+            <Col md={6} className="first">{new Date().getFullYear()} © INVOIS.</Col>
+            <Col md={6} className="second">
               <div className="text-sm-end d-none d-sm-block">
                 Made with love <img src={Heart} width={30} alt="animated-heart" />
               </div>

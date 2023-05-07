@@ -11,6 +11,12 @@ class DashboardView(APIView):
        content = {'message': 'Welcome to the JWT Authentication page using React Js and Django!'}
        return Response(content)
    
+class UpdateYporProfileView(APIView):
+     
+   permission_classes = (IsAuthenticated, )
+   def get(self, request):
+       content = {'message': 'Welcome to the JWT Authentication page using React Js and Django!'}
+       return Response(content)
 
 class PincodemainView(APIView):
      
@@ -18,6 +24,8 @@ class PincodemainView(APIView):
    def get(self, request):
        content = {'message': 'Welcome to the JWT Authentication page using React Js and Django!'}
        return Response(content)
+   
+
    
 
 class LogoutView(APIView):

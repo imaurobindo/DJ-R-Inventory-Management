@@ -1,10 +1,19 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, User, Group
 import uuid
 #from .manager import UserManager
 
+from django.contrib.auth.models import Permission
+
 
 # Create your models here.
+
+class IsLive(Permission):
+    class Meta:
+        proxy = True
+        verbose_name = 'Is Live'
+        verbose_name_plural = 'Is Live'
+
 class SellerAddress(models.Model):
     pincode = models.CharField(max_length=50)
     postoffice = models.CharField(max_length=150)
@@ -22,9 +31,14 @@ class SellerAddress(models.Model):
         db_table = "all_seller_addresses"
 
 
+
+
+
+
 class Warehouse(models.Model):
-    warehouse_name = models.CharField(max_length=50)
-    warehouse_address = models.CharField(max_length=150)
+    warehouse_name = models.CharField(max_length=50, primary_key=True, default="")
+    id = models.CharField(max_length=8, default="")
+ 
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -32,6 +46,24 @@ class Warehouse(models.Model):
     
     class Meta:
         db_table = "all_warehouses"
+
+
+class WarehouseAddress(models.Model):
+    warehouse_name = models.ForeignKey(Warehouse , on_delete=models.CASCADE, default="")
+    pincode = models.CharField(max_length=50)
+    postoffice = models.CharField(max_length=150)
+    town_or_city = models.CharField(max_length=150)
+    district = models.CharField(max_length=150)
+    state = models.CharField(max_length=150)
+    country = models.CharField(max_length=150)
+    street_address = models.CharField(max_length=300, default="")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.area, self.city, self.state
+    
+    class Meta:
+        db_table = "all_warehouse_addresses"
 
 
 class SellerWarehouseAddress(models.Model):
@@ -55,6 +87,10 @@ class SellerWarehouse(models.Model):
 
 class Seller(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    username = models.OneToOneField(User, on_delete=models.CASCADE, default="")
+    seller_mobile = models.CharField(max_length=20, default="")
+    seller_otp = models.CharField(max_length=6, default="")
+    otp_verified = models.BooleanField(default="False")
     seller_name = models.CharField(max_length=50)
     seller_warehouse = models.ManyToManyField(SellerWarehouse)
     company_warehouse = models.ForeignKey(Warehouse, on_delete=models.CASCADE, default="")

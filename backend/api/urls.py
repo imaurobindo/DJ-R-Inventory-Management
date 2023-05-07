@@ -1,6 +1,6 @@
 
 from django.urls import path
-from .views import ProductsView, AuthUserView, SellersView, WarehousesView, CategoryView, SubCategoryView, SubSubCategoryView, SellerAddressView, current_user, MyUserView
+from .views import ProductsView, AuthUserView,AuthUserPutView,WarehouseAddressView, SellersView, WarehousesView, CategoryView, SubCategoryView, SubSubCategoryView, SellerAddressView, current_user, MyUserView, SellerMobileView
 from api import views
 
 urlpatterns = [
@@ -9,13 +9,16 @@ urlpatterns = [
     # path('login',views.loginUser , name="login"),
     # path('logout',views.logoutUser, name="logout")
     path('registerapi/', AuthUserView.as_view()),
+    path('staffupdateapi/<str:username>/', AuthUserPutView.as_view()),
     path('sellerapi/', SellersView.as_view()),
     path('warehouseapi/', WarehousesView.as_view()),
     path('categoryapi/', CategoryView.as_view()),
     path('subcategoryapi/', SubCategoryView.as_view()),
     path('subsubcategoryapi/', SubSubCategoryView.as_view()),
     path('selleraddressapi/', SellerAddressView.as_view()),
+    path('warehouseaddressapi/', WarehouseAddressView.as_view()),
     path('current_user/', current_user),
     path('registermyuserapi/', MyUserView.as_view()),
+    path('sellermobileapi/', SellerMobileView.as_view()),
 
 ]
