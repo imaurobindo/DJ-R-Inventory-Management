@@ -21,7 +21,7 @@ import { WarehouseAdminlogin } from './components/WarehouseAdminlogin';
 import AdminDashboard from './components/AdminDashboard';
 import AdminProfile from './components/AdminProfile';
 import AddWarehouse from './components/AddWarehouse';
-import AddProductCategories from './components/AddProductCategories';
+import AddProductCategories1 from './components/AddProductCategories1';
 
 
 
@@ -62,18 +62,20 @@ function App() {
   }
 };
 
-  console.log(theme.palette.type);
-  console.log(themeType); // log the current theme type
+  // console.log(theme.palette.type);
+  // console.log(themeType); // log the current theme type
 
   return (
     <BrowserRouter>
-    
+      
       <div className={isDarkMode ? 'dark-mode' : ''}>
       <Navigation></Navigation>
         <div className="toggle-container" onClick={toggleDarkMode}>
           <img src={isDarkMode ? sunIcon : moonIcon} alt="toggle" />
           
+          
         </div>
+        
         
         
         <LoadingBar /> 
@@ -88,7 +90,7 @@ function App() {
           <Route path="/hidden404/warehouseadminlogin" element={<WarehouseAdminlogin /> } />
           <Route path="/hidden404/admindashboard" element={<AdminDashboard /> } />
           <Route path="/hidden404/warehouses" element={< AddWarehouse /> } />
-          <Route path="/hidden404/categories" element={<AddProductCategories /> } />
+          <Route path="/hidden404/categories" element={<AddProductCategories1 /> } />
           
         </Routes>
         

@@ -7,6 +7,8 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import 'react-toastify/dist/ReactToastify.css';
 import zxcvbn from 'zxcvbn';
+
+import PincodeMain from './PinCodeMain';
 //import 'react-toastify/dist/ReactToastify.dark.css';
 
 const AddWarehouse = () => {
@@ -141,22 +143,21 @@ const AddWarehouse = () => {
           <li key={warehousesaddress.id}>
             <h3>{warehouseaddress.warehouse_name}, {warehouseaddress.street_address}, {warehouseaddress.postoffice}, {warehouseaddress.town_or_city}, {warehouseaddress.district}, {warehouseaddress.state}, {warehouseaddress.country}</h3>
             <h3>{warehouseaddress.pincode}</h3>
-            <h3>Pincode: {warehouseaddress.pincode}</h3>
-            <h3>Pincode: {warehouseaddress.pincode}</h3>
-            <h3>Pincode: {warehouseaddress.pincode}</h3>
-            <h3>Pincode: {warehouseaddress.pincode}</h3>
+            
             
             
           </li>
         ))}
       </ul>
     </div>
+
+    
             <div className='register-inner'>
 
                 
 
                 <h1>Add a new Warehouse</h1>
-
+                <PincodeMain />
                 <form  onSubmit={handleSubmit} method='post'>
                     <div className='cw-add'>
                         <div>

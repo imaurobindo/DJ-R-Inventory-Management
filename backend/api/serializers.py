@@ -47,6 +47,21 @@ class CategorySerializer(serializers.ModelSerializer):
         model = Category
         fields = ('__all__')
 
+class CategoryDeleteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ('__all__')
+
+class SubCategoryDeleteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SubCategory
+        fields = ('__all__')
+
+class SubSubCategoryDeleteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SubSubCategory
+        fields = ('__all__')
+
 class SubCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = SubCategory

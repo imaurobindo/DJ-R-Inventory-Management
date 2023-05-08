@@ -49,7 +49,7 @@ class Warehouse(models.Model):
 
 
 class WarehouseAddress(models.Model):
-    warehouse_name = models.ForeignKey(Warehouse , on_delete=models.CASCADE, default="")
+    warehouse_name = models.CharField(max_length=50, default="")
     pincode = models.CharField(max_length=50)
     postoffice = models.CharField(max_length=150)
     town_or_city = models.CharField(max_length=150)
@@ -64,6 +64,23 @@ class WarehouseAddress(models.Model):
     
     class Meta:
         db_table = "all_warehouse_addresses"
+
+class WarehouseAddress1(models.Model):
+    warehouse_name = models.ForeignKey(Warehouse , on_delete=models.CASCADE, default="")
+    pincode = models.CharField(max_length=50)
+    postoffice = models.CharField(max_length=150)
+    town_or_city = models.CharField(max_length=150)
+    district = models.CharField(max_length=150)
+    state = models.CharField(max_length=150)
+    country = models.CharField(max_length=150)
+    street_address = models.CharField(max_length=300, default="")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.area, self.city, self.state
+    
+    class Meta:
+        db_table = "all_warehouse_addresses1"
 
 
 class SellerWarehouseAddress(models.Model):

@@ -1,11 +1,12 @@
 from django.contrib import admin
-from .models import Product
+from .models import Product, WarehouseAddress
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import Group, User, Permission
 from api.models import IsLive
 
 # Register your models here.
 admin.site.register(Product)
+admin.site.register(WarehouseAddress)
 
 class IsLiveAdmin(admin.ModelAdmin):
     pass

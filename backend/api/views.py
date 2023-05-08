@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from rest_framework import generics, status
 from django.contrib.auth.models import User
 from .models import Product, Warehouse,WarehouseAddress, Seller, Category, SubCategory, SubSubCategory, SellerAddress, MyUser
-from .serializers import ProductsSerializer, AuthUserSerializer, WarehouseAddressSerializer, AuthUserPutSerializer, SellersSerializer, WarehousesSerializer, CategorySerializer, SubCategorySerializer, SubSubCategorySerializer, SellerAddressSerializer, MyUserSerializer, SellerMobileSerializer
+from .serializers import ProductsSerializer, SubSubCategoryDeleteSerializer, SubCategoryDeleteSerializer, CategoryDeleteSerializer, AuthUserSerializer, WarehouseAddressSerializer, AuthUserPutSerializer, SellersSerializer, WarehousesSerializer, CategorySerializer, SubCategorySerializer, SubSubCategorySerializer, SellerAddressSerializer, MyUserSerializer, SellerMobileSerializer
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import ensure_csrf_cookie
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, AllowAny
@@ -98,6 +98,27 @@ class CategoryView(generics.ListCreateAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
     permission_classes = [AllowAny]
+
+class CategoryDeleteView(generics.DestroyAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategoryDeleteSerializer
+    permission_classes = [AllowAny]
+    lookup_field = 'id'
+    lookup_url_kwarg = 'id'
+
+class SubCategoryDeleteView(generics.DestroyAPIView):
+    queryset = SubCategory.objects.all()
+    serializer_class = SubCategoryDeleteSerializer
+    permission_classes = [AllowAny]
+    lookup_field = 'id'
+    lookup_url_kwarg = 'id'
+
+class SubSubCategoryDeleteView(generics.DestroyAPIView):
+    queryset = SubSubCategory.objects.all()
+    serializer_class = SubSubCategoryDeleteSerializer
+    permission_classes = [AllowAny]
+    lookup_field = 'id'
+    lookup_url_kwarg = 'id'
 
 class SubCategoryView(generics.ListCreateAPIView):
     queryset = SubCategory.objects.all()
