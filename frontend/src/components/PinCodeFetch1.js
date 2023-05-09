@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { v4 } from "uuid";
-import PickupAddressAdmin from './PickupAddressAdmin';
+import PickupAddress from './PickupAddress';
 import props from 'prop-types';
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -63,7 +63,7 @@ function PinCodeFetch1({ pincode }) {
                 </select>
                 
             </div>
-            <PickupAddressAdmin pincode={pincode} area={data.map((output, i) => (output.PostOffice[index]))} />
+            <PickupAddress pincode={pincode} area={data.map((output, i) => (output.PostOffice[index]))} />
         </div>
     );
 }

@@ -637,7 +637,7 @@ position: relative;
 }
 
 .delete-btn-category {
-  background: white;
+  background: rgb(255, 247, 0);
   border-radius: 3px;
   border: 1% black;
   cursor: pointer;
@@ -659,8 +659,42 @@ position: relative;
 
 }
 
+.sub-sub-cat-delete-btn {
+  background: rgb(36, 255, 2);
+  border-radius: 3px;
+  border: 0.5% black;
+  cursor: pointer;
+  font-size: 100%;
+  margin: auto;
+  outline: none;
+  padding: 0;
+  position: relative;
+  left: 78%;
+  bottom: 28px;
+  height: 27px;
+  width: 27px;
+  box-shadow: 4px 4px 4px 0 rgba(55, 0, 255, 0.2), -4px -4px 44px 0 rgba(255, 0, 0, 0.15) !important;
+}
+
 .delete-btn {
   background: white;
+  border-radius: 3px;
+  border: 1% black;
+  cursor: pointer;
+  font-size: 100%;
+  margin: auto;
+  outline: none;
+  padding: 0;
+  position: relative;
+  left: 78%;
+  bottom: 28px;
+  height: 27px;
+  width: 27px;
+  box-shadow: 4px 4px 4px 0 rgba(55, 0, 255, 0.2), -4px -4px 44px 0 rgba(255, 0, 0, 0.15) !important;
+}
+
+.delete-btn-sub-cat {
+  background: rgb(255, 6, 6);
   border-radius: 3px;
   border: 1% black;
   cursor: pointer;
@@ -736,6 +770,24 @@ position: relative;
   box-shadow: 4px 4px 4px 0 rgba(55, 0, 255, 0.2), -4px -4px 44px 0 rgba(255, 0, 0, 0.15) !important;
   
 }
+
+.exp-subcat-btn {
+  background: white;
+  border-radius: 3px;
+  border: 1% black;
+  cursor: pointer;
+  font-size: 100%;
+  margin: auto;
+  outline: none;
+  padding: 0;
+  position: relative;
+  left: 80%;
+  bottom: 0px;
+  height: 27px;
+  width: 27px;
+  box-shadow: 4px 4px 4px 0 rgba(55, 0, 255, 0.2), -4px -4px 44px 0 rgba(255, 0, 0, 0.15) !important;
+  
+}
   
 .add-btn svg{
     margin: auto;
@@ -794,6 +846,7 @@ position: relative;
     height: auto;
     margin-bottom: 50px;
     font-size: 100%;
+    
 }
 
 .categories h2{

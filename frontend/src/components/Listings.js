@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 
 const API_URL = `http://${window.location.hostname}:8000`;
 
-function AddProductCategories() {
+function Listings() {
   const [categories, setCategories] = useState([]);
   const [categories1, setCategories1] = useState([]);
   const [categories2, setCategories2] = useState([]);
@@ -234,7 +234,7 @@ function AddProductCategories() {
   return (
     <div className="register">
       <div className="all-warehouses">
-        <h2>All Categories</h2>
+        <h2>All Listings</h2>
         <button className="add-btn" onClick={() => setShowAddForm(true)}>
           <FontAwesomeIcon icon={faPlus} />
         </button>
@@ -422,7 +422,7 @@ function AddProductCategories() {
 
                         </li>
                         <button
-                          className="delete-btn"
+                          className="delete-btn-sub-cat"
                           onClick={() => handleDelete1(subCategory.id)}
                         >
                           <FontAwesomeIcon icon={faTrash} />
@@ -504,7 +504,7 @@ function AddProductCategories() {
   );
 }
 
-export default AddProductCategories;
+export default Listings;
 
 
 

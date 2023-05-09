@@ -76,6 +76,17 @@ export function Navigation() {
 
 {isAuth && (
   <Nav className="ml-auto">
+    {user && user.username !== "admin@gmail.com" ? (
+      <Link to="/listings" className="nav-link">
+        Listings
+      </Link>
+    ) : null }
+    
+  </Nav>
+)}
+
+{isAuth && (
+  <Nav className="ml-auto">
     {user && user.username == "admin@gmail.com" ? (
       <Link to="/hidden404/categories" className="nav-link">
         Categories
@@ -84,6 +95,19 @@ export function Navigation() {
     
   </Nav>
 )}
+
+{isAuth && (
+  <Nav className="ml-auto">
+    {user && user.username == "admin@gmail.com" ? (
+      <Link to="/hidden404/consignments" className="nav-link">
+        Consignments
+      </Link>
+    ) : null }
+    
+  </Nav>
+)}
+
+
 
               {isAuth ? <Link to="dashboard/pincodemain" className="nav-link">PinCodeMain</Link> : null}
               {isAuth ? <Link to="/logout" className="nav-link">Logout</Link> :  

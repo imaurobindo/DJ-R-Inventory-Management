@@ -22,6 +22,8 @@ import AdminDashboard from './components/AdminDashboard';
 import AdminProfile from './components/AdminProfile';
 import AddWarehouse from './components/AddWarehouse';
 import AddProductCategories1 from './components/AddProductCategories1';
+import Listings from './components/Listings';
+import Consignments from './components/Consignments';
 
 
 
@@ -84,6 +86,7 @@ function App() {
           <Route path="dashboard/pincodemain" element={<PincodeMain />} />
           <Route path="updateyourprofile" element={<UpdateYourProfile />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/listings" element={<Listings />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/register" element={<Register />} />
           <Route path="/" element={<Invois />} />
@@ -91,6 +94,7 @@ function App() {
           <Route path="/hidden404/admindashboard" element={<AdminDashboard /> } />
           <Route path="/hidden404/warehouses" element={< AddWarehouse /> } />
           <Route path="/hidden404/categories" element={<AddProductCategories1 /> } />
+          <Route path="/hidden404/consignments" element={< Consignments /> } />
           
         </Routes>
         
