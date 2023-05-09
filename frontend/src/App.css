@@ -411,6 +411,7 @@
 .other-pin-details {
   box-shadow: 4px 4px 4px 0 rgba(55, 0, 255, 0.2), -4px -4px 44px 0 rgba(255, 0, 0, 0.15) !important;
   width: 90%;
+  margin-top: 4%;
   font-size: large;
   
   
@@ -637,7 +638,7 @@ position: relative;
 }
 
 .delete-btn-category {
-  background: rgb(255, 247, 0);
+  background: rgb(249, 0, 0);
   border-radius: 3px;
   border: 1% black;
   cursor: pointer;
@@ -660,24 +661,24 @@ position: relative;
 }
 
 .sub-sub-cat-delete-btn {
-  background: rgb(36, 255, 2);
+  background: rgb(43, 218, 16);
   border-radius: 3px;
   border: 0.5% black;
   cursor: pointer;
-  font-size: 100%;
+  font-size: 80%;
   margin: auto;
   outline: none;
   padding: 0;
   position: relative;
-  left: 78%;
-  bottom: 28px;
+  left: 77%;
+  bottom: 32px;
   height: 27px;
   width: 27px;
   box-shadow: 4px 4px 4px 0 rgba(55, 0, 255, 0.2), -4px -4px 44px 0 rgba(255, 0, 0, 0.15) !important;
 }
 
-.delete-btn {
-  background: white;
+.delete-btn-sub-cate {
+  background: rgb(223, 220, 10);
   border-radius: 3px;
   border: 1% black;
   cursor: pointer;
@@ -687,7 +688,7 @@ position: relative;
   padding: 0;
   position: relative;
   left: 78%;
-  bottom: 28px;
+  bottom:33px;
   height: 27px;
   width: 27px;
   box-shadow: 4px 4px 4px 0 rgba(55, 0, 255, 0.2), -4px -4px 44px 0 rgba(255, 0, 0, 0.15) !important;
@@ -782,7 +783,7 @@ position: relative;
   padding: 0;
   position: relative;
   left: 80%;
-  bottom: 0px;
+  bottom: 33px;
   height: 27px;
   width: 27px;
   box-shadow: 4px 4px 4px 0 rgba(55, 0, 255, 0.2), -4px -4px 44px 0 rgba(255, 0, 0, 0.15) !important;

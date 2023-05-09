@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import zxcvbn from 'zxcvbn';
 
 import PincodeMain from './PinCodeMain';
+import PinCodeMainAdmin from './PinCodeMainAdmin';
 //import 'react-toastify/dist/ReactToastify.dark.css';
 
 const AddWarehouse = () => {
@@ -132,13 +133,13 @@ const AddWarehouse = () => {
             <div className='all-warehouses'>
       <h2>Warehouse Data</h2>
       <ul>
-        {warehouses.map((warehouse) => (
+        {/* {warehouses.map((warehouse) => (
           <li key={warehouse.id}>
             <h3>{warehouse.id}. {warehouse.warehouse_name}</h3>
             
             
           </li>
-        ))}
+        ))} */}
         {warehousesaddress.map((warehouseaddress) => (
           <li key={warehousesaddress.id}>
             <h3>{warehouseaddress.warehouse_name}, {warehouseaddress.street_address}, {warehouseaddress.postoffice}, {warehouseaddress.town_or_city}, {warehouseaddress.district}, {warehouseaddress.state}, {warehouseaddress.country}</h3>
@@ -151,13 +152,15 @@ const AddWarehouse = () => {
       </ul>
     </div>
 
+    <div className='register-inner'><PinCodeMainAdmin /></div>
     
-            <div className='register-inner'>
+    
+            {/* <div className='register-inner'>
 
                 
 
                 <h1>Add a new Warehouse</h1>
-                <PincodeMain />
+                
                 <form  onSubmit={handleSubmit} method='post'>
                     <div className='cw-add'>
                         <div>
@@ -217,8 +220,8 @@ const AddWarehouse = () => {
                     <button id='cw-add-btn' className='btn btn-primary' type="submit" >Add Warehouse</button>
                 </form>
                 <br></br>
-                {/* <ToastContainer autoClose={2000} theme="colored"/> */}
-            </div>
+                <ToastContainer autoClose={2000} theme="colored"/>
+            </div> */}
             
         </div>
 

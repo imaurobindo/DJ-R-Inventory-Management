@@ -5,8 +5,9 @@ import props from 'prop-types';
 import { ToastContainer, toast } from 'react-toastify';
 import LoadingBar from 'react-loading-bar';
 import 'react-loading-bar/dist/index.css';
+import SetWarehouseAddress from './SetWarehouseAddress';
 
-function PinCodeFetch1({ pincode }) {
+function PinCodeFetchAdmin({ pincode }) {
     const [isLoading, setIsLoading] = useState(false);
     const [data, setData] = useState(null);
     const [index, setIndex] = useState(0); // initial value of index is 0
@@ -70,7 +71,7 @@ function PinCodeFetch1({ pincode }) {
                 
             </div>
 
-            <PickupAddress pincode={pincode} area={data.map((output, i) => (output.PostOffice[index]))} />
+            <SetWarehouseAddress pincode={pincode} area={data.map((output, i) => (output.PostOffice[index]))} />
             <LoadingBar
         showFastActions
         progress={isLoading ? 50 : 0} // set progress to 50 when loading
@@ -79,4 +80,4 @@ function PinCodeFetch1({ pincode }) {
     );
 }
 
-export default PinCodeFetch1;
+export default PinCodeFetchAdmin;

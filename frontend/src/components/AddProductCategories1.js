@@ -90,7 +90,7 @@ function AddProductCategories() {
       .then((response) => {
         if (response.status === 204) {
           const updatedCategories2 = categories2.filter((category2) => category2.id !== id);
-          setCategories1(updatedCategories2);
+          setCategories2(updatedCategories2);
           const deletedSubSubCategory = categories2.find((category2) => category2.id === id);
           const subSubCategoryName = deletedSubSubCategory ? deletedSubSubCategory.sub_sub_category_name : '';
           toast.warning(`Sub-Sub-Category "${subSubCategoryName}" has been deleted successfully!`);
@@ -304,7 +304,13 @@ function AddProductCategories() {
                   {categories1.map((subCategory) =>
                     subCategory.category === category.id ? (
                       <div key={subCategory.id} className="sub-categories">
-                        <li>{subCategory.sub_category_name}
+                        <li> <h2>{subCategory.sub_category_name}</h2>
+                        <button
+                          className="delete-btn-sub-cate"
+                          onClick={() => handleDelete1(subCategory.id)}
+                        >
+                          <FontAwesomeIcon icon={faTrash} />
+                        </button>
 
                           {/* THIS PLACE to add Sub Cat Code */}
 
@@ -314,7 +320,7 @@ function AddProductCategories() {
                             onClick={() => {
                               setSelectedSubCategoryId(subCategory.id);
                               setIsSubCategoryExpanded((prev) =>
-                                prev && selectedCategoryId === subCategory.id ? false : true
+                                prev && selectedSubCategoryId === subCategory.id ? false : true
                               );
                             }}
                           >
@@ -328,9 +334,9 @@ function AddProductCategories() {
                               }
                             />
                           </button>
-                          <button className="delete-btn-category" onClick={() => handleDelete(subCategory.id)}>
+                          {/* <button className="delete-btn-category" onClick={() => handleDelete(subCategory.id)}>
                             <FontAwesomeIcon icon={faTrash} />
-                          </button>
+                          </button> */}
 
                           {isSubCategoryExpanded && selectedSubCategoryId === subCategory.id ? (
                             <ul>
@@ -421,12 +427,7 @@ function AddProductCategories() {
                           {/* This place subcat end */}
 
                         </li>
-                        <button
-                          className="delete-btn"
-                          onClick={() => handleDelete1(subCategory.id)}
-                        >
-                          <FontAwesomeIcon icon={faTrash} />
-                        </button>
+                        
 
 
 

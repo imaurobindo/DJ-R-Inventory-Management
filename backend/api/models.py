@@ -162,6 +162,9 @@ class Product(models.Model):
         db_table = "all_products"
 
 
+
+
+
 # class User(AbstractUser):
 #     phone_number = models.CharField(max_length=13, unique=True)
 #     is_phone_verified = models.BooleanField(default=False)
@@ -212,3 +215,6 @@ class MyUser(AbstractBaseUser):
 
     # def has_module_perms(self, app_label):
     #     return True
+
+
+
