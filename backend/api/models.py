@@ -60,7 +60,7 @@ class WarehouseAddress(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.area, self.city, self.state
+        return '{}, {}, {}, {}'.format( self.warehouse_name, self.postoffice, self.town_or_city, self.state)
     
     class Meta:
         db_table = "all_warehouse_addresses"
@@ -77,7 +77,7 @@ class WarehouseAddress1(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.area, self.city, self.state
+        return self.warehouse_name
     
     class Meta:
         db_table = "all_warehouse_addresses1"
@@ -110,7 +110,7 @@ class Seller(models.Model):
     otp_verified = models.BooleanField(default="False")
     seller_name = models.CharField(max_length=50)
     seller_warehouse = models.ManyToManyField(SellerWarehouse)
-    company_warehouse = models.ForeignKey(Warehouse, on_delete=models.CASCADE, default="")
+    company_warehouse = models.ForeignKey(WarehouseAddress, on_delete=models.CASCADE, default="")
     class Meta:
         db_table = "all_sellers"
 
@@ -143,26 +143,79 @@ class SubSubCategory(models.Model):
         db_table = "all_sub_sub_categories"
     def __str__(self):
         return self.sub_sub_category_name
+    
 
+class Brand(models.Model):
+    brand_name = models.CharField(max_length=30)
+    brand_description = models.TextField(max_length=300, default="")
+    brand_address = models.TextField(max_length=300, default="")
 
 class Product(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     product_name = models.CharField(max_length=50)
     brand = models.CharField(max_length=30)
+    product_size = models.CharField(max_length=30, default="")
+    product_color = models.CharField(max_length=30, default="")
     product_price = models.CharField(max_length=30)
     product_category = models.ForeignKey(Category, on_delete=models.CASCADE)
     product_subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE)
     product_sub_subcategory = models.ForeignKey(SubSubCategory, on_delete=models.CASCADE, default="")
     product_description = models.TextField(max_length=300, default="")
     product_seller = models.ForeignKey(Seller, on_delete=models.CASCADE, default="")
-    product_image = models.ImageField(upload_to="images/product_images", default="")
+    product_image1 = models.ImageField(upload_to="images/product_images", default="")
+    product_image2 = models.ImageField(upload_to="images/product_images", default="")
+    product_image3 = models.ImageField(upload_to="images/product_images", default="")
+    product_image4 = models.ImageField(upload_to="images/product_images", default="")
     ratings = models.CharField(max_length=30)
     created_at = models.DateTimeField(auto_now_add=True)
     class Meta:
         db_table = "all_products"
 
+class Consignment(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    seller_name = models.ForeignKey(Seller, on_delete=models.CASCADE)
+    seller_address = models.ForeignKey(SellerAddress, on_delete=models.CASCADE, default="")
+    selected_warehouse_address = models.ForeignKey(WarehouseAddress, on_delete=models.CASCADE, default="")
+    company_warehouse_address = models.ForeignKey(Warehouse, null=True, on_delete=models.CASCADE, default="")
+    product_category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    product_sub_category = models.ForeignKey(SubCategory, on_delete=models.CASCADE)
+    product_sub_sub_category = models.ForeignKey(SubSubCategory, on_delete=models.CASCADE)
+    product_name = models.CharField(max_length=50)
+    product_brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
+    product_size = models.CharField(max_length=30)
+    product_color = models.CharField(max_length=30, default="")
+    product_price = models.CharField(max_length=30)
+    product_description = models.TextField(max_length=300, default="")
+    product_image1 = models.ImageField(upload_to="images/product_images", default="")
+    product_image2 = models.ImageField(upload_to="images/product_images", default="")
+    product_image3 = models.ImageField(upload_to="images/product_images", default="")
+    product_image4 = models.ImageField(upload_to="images/product_images", default="")
+    product_stock = models.IntegerField(null=True)
+    consignment_approved = models.BooleanField(default=False)
 
 
+class ListingNew(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    seller_name = models.ForeignKey(Seller, on_delete=models.CASCADE)
+    product_category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    product_sub_category = models.ForeignKey(SubCategory, on_delete=models.CASCADE)
+    product_sub_sub_category = models.ForeignKey(SubSubCategory, on_delete=models.CASCADE)
+    warehouse_address = models.ForeignKey(WarehouseAddress, on_delete=models.CASCADE)
+    product_name = models.CharField(max_length=50)
+    product_brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
+    product_brand_verification = models.FileField(upload_to="files/verification_documents", default="")
+    product_size = models.CharField(max_length=30)
+    product_color = models.CharField(max_length=30, default="")
+    product_price = models.CharField(max_length=30)
+    product_description = models.TextField(max_length=300, default="")
+    product_image1 = models.ImageField(upload_to="images/product_images", default="")
+    product_image2 = models.ImageField(upload_to="images/product_images", default="")
+    product_image3 = models.ImageField(upload_to="images/product_images", default="")
+    product_image4 = models.ImageField(upload_to="images/product_images", default="")
+    product_stock = models.IntegerField(null=True)
+    qc_pass_status = models.BooleanField(default=False)
+
+    
 
 
 # class User(AbstractUser):

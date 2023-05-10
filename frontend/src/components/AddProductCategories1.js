@@ -4,10 +4,13 @@ import { faPlus, faTrash, faXmark, faSquareCaretDown, faSquareCaretUp } from '@f
 import axios from 'axios';
 import CategoryExpandButton from './CategoryExpandButton';
 import { toast } from 'react-toastify';
+import { useTheme } from '@material-ui/core/styles';
 
 const API_URL = `http://${window.location.hostname}:8000`;
 
 function AddProductCategories() {
+  const theme = useTheme();
+  const color = theme.palette.type === 'dark' ? '#00b1be' : '#00b1be';
   const [categories, setCategories] = useState([]);
   const [categories1, setCategories1] = useState([]);
   const [categories2, setCategories2] = useState([]);
@@ -232,7 +235,8 @@ function AddProductCategories() {
 
 
   return (
-    <div className="register">
+    // <div style={{ color }} className="register">
+    <div  className="register">
       <div className="all-warehouses">
         <h2>All Categories</h2>
         <button className="add-btn" onClick={() => setShowAddForm(true)}>

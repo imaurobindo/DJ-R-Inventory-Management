@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from rest_framework import generics, status
 from django.contrib.auth.models import User
-from .models import Product, Warehouse,WarehouseAddress, Seller, Category, SubCategory, SubSubCategory, SellerAddress, MyUser
-from .serializers import ProductsSerializer, SubSubCategoryDeleteSerializer, SubCategoryDeleteSerializer, CategoryDeleteSerializer, AuthUserSerializer, WarehouseAddressSerializer, AuthUserPutSerializer, SellersSerializer, WarehousesSerializer, CategorySerializer, SubCategorySerializer, SubSubCategorySerializer, SellerAddressSerializer, MyUserSerializer, SellerMobileSerializer
+from .models import Product, Warehouse,WarehouseAddress, Seller, Brand, Category, SubCategory, SubSubCategory, SellerAddress, MyUser
+from .serializers import ProductsSerializer, BrandSerializer, SubSubCategoryDeleteSerializer, SubCategoryDeleteSerializer, CategoryDeleteSerializer, AuthUserSerializer, WarehouseAddressSerializer, AuthUserPutSerializer, SellersSerializer, WarehousesSerializer, CategorySerializer, SubCategorySerializer, SubSubCategorySerializer, SellerAddressSerializer, MyUserSerializer, SellerMobileSerializer
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import ensure_csrf_cookie
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, AllowAny
@@ -128,6 +128,18 @@ class SubCategoryView(generics.ListCreateAPIView):
 class SubSubCategoryView(generics.ListCreateAPIView):
     queryset = SubSubCategory.objects.all()
     serializer_class = SubSubCategorySerializer
+    permission_classes = [AllowAny]
+
+
+# class ConsignmentView(generics.ListCreateAPIView):
+#     queryset = Consignment.objects.all()
+#     serializer_class = ConsignmentSerializer
+#     permission_classes = [AllowAny]
+
+
+class BrandView(generics.ListCreateAPIView):
+    queryset = Brand.objects.all()
+    serializer_class = BrandSerializer
     permission_classes = [AllowAny]
 
 

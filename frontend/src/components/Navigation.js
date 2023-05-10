@@ -76,11 +76,13 @@ export function Navigation() {
 
 {isAuth && (
   <Nav className="ml-auto">
-    {user && user.username !== "admin@gmail.com" ? (
-      <Link to="/listings" className="nav-link">
+    {user && user.username == "admin@gmail.com" ? (
+      <Link to="/hidden404/allsellerlistings" className="nav-link">
         Listings
       </Link>
-    ) : null }
+    ) : <Link to="/listings" className="nav-link">
+    Your Listings
+  </Link> }
     
   </Nav>
 )}
@@ -102,7 +104,9 @@ export function Navigation() {
       <Link to="/hidden404/consignments" className="nav-link">
         Consignments
       </Link>
-    ) : null }
+    ) : <Link to="/consignments" className="nav-link">
+    Your Consignments
+  </Link> }
     
   </Nav>
 )}

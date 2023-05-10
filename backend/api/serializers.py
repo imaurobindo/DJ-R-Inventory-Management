@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Product, Seller, Warehouse,WarehouseAddress, Category, SubCategory, SubSubCategory, SellerAddress, MyUser
+from .models import Product, Seller, Warehouse,  Brand, WarehouseAddress, Category, SubCategory, SubSubCategory, SellerAddress, MyUser
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -77,6 +77,20 @@ class SellerAddressSerializer(serializers.ModelSerializer):
     class Meta:
         model = SellerAddress
         fields = ('__all__')
+
+
+
+class BrandSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Brand
+        fields = ('__all__')
+
+
+
+# class ConsignmentSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Consignment
+#         fields = ('__all__')
 
 
 class MyUserSerializer(serializers.ModelSerializer):

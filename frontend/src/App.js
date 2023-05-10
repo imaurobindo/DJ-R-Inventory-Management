@@ -24,6 +24,8 @@ import AddWarehouse from './components/AddWarehouse';
 import AddProductCategories1 from './components/AddProductCategories1';
 import Listings from './components/Listings';
 import Consignments from './components/Consignments';
+import YourConsignments from './components/YourConsignments';
+import AllSellerListings from './components/AllSellerListings';
 
 
 
@@ -32,6 +34,7 @@ function App() {
   const [themeType, setThemeType] = useState("light"); // add a state variable for the current theme type
   const theme = useTheme();
   
+  const color = themeType === 'dark' ? '#00b1be' : '#00b1be';
 
   const contextClass = {
     success: "bg-blue-600 opacity-100",
@@ -87,6 +90,7 @@ function App() {
           <Route path="updateyourprofile" element={<UpdateYourProfile />} />
           <Route path="/login" element={<Login />} />
           <Route path="/listings" element={<Listings />} />
+          <Route path="/hidden404/allsellerlistings" element={<AllSellerListings />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/register" element={<Register />} />
           <Route path="/" element={<Invois />} />
@@ -95,6 +99,7 @@ function App() {
           <Route path="/hidden404/warehouses" element={< AddWarehouse /> } />
           <Route path="/hidden404/categories" element={<AddProductCategories1 /> } />
           <Route path="/hidden404/consignments" element={< Consignments /> } />
+          <Route path="/consignments" element={< YourConsignments /> } />
           
         </Routes>
         

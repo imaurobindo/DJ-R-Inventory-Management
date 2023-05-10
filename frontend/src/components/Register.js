@@ -85,6 +85,19 @@ const Register = () => {
                         navigate('/login');
                     }, 3000);
 
+                    // Notify admin about successful form submission
+                // const adminNotification = {
+                //     title: "Form Submitted Successfully",
+                //     message: `A new form has been submitted by ${state.username}`,
+                // };
+                // axios.post(`http://${window.location.hostname}:8000/admin/notification`, adminNotification)
+                //     .then((response) => {
+                //         console.log(response);
+                //     })
+                //     .catch((error) => {
+                //         console.log(error);
+                //     });
+
                 } else {
                     toast.error("Registration error. Please try again.");
                 }

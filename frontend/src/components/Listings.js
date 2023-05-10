@@ -8,6 +8,8 @@ import { toast } from 'react-toastify';
 const API_URL = `http://${window.location.hostname}:8000`;
 
 function Listings() {
+  // const theme = useTheme();
+  // const color = theme.palette.type === 'dark' ? '#00b1be' : '#00b1be';
   const [categories, setCategories] = useState([]);
   const [categories1, setCategories1] = useState([]);
   const [categories2, setCategories2] = useState([]);
@@ -90,7 +92,7 @@ function Listings() {
       .then((response) => {
         if (response.status === 204) {
           const updatedCategories2 = categories2.filter((category2) => category2.id !== id);
-          setCategories1(updatedCategories2);
+          setCategories2(updatedCategories2);
           const deletedSubSubCategory = categories2.find((category2) => category2.id === id);
           const subSubCategoryName = deletedSubSubCategory ? deletedSubSubCategory.sub_sub_category_name : '';
           toast.warning(`Sub-Sub-Category "${subSubCategoryName}" has been deleted successfully!`);
@@ -232,15 +234,16 @@ function Listings() {
 
 
   return (
-    <div className="register">
+    // <div style={{ color }} className="register">
+    <div  className="register">
       <div className="all-warehouses">
-        <h2>All Listings</h2>
+        <h2>Your Listings</h2>
         <button className="add-btn" onClick={() => setShowAddForm(true)}>
           <FontAwesomeIcon icon={faPlus} />
         </button>
         {showAddForm && (
           <div className="register-inner">
-            <h1>Add a new Category</h1>
+            <h1>Add a new Listing</h1>
             <button
               className="close-btn"
               onClick={() => setShowAddForm(false)}
@@ -276,7 +279,7 @@ function Listings() {
           {categories.map((category) => (
             <div key={category.id} className="categories">
               <h2>{category.category_name} </h2>
-              <button
+              {/* <button
                 className="exp-cat-btn"
                 onClick={() => {
                   setSelectedCategoryId(category.id);
@@ -294,27 +297,33 @@ function Listings() {
                       : faSquareCaretDown
                   }
                 />
-              </button>
+              </button> */}
               <button className="delete-btn-category" onClick={() => handleDelete(category.id)}>
                 <FontAwesomeIcon icon={faTrash} />
               </button>
 
-              {isCategoryExpanded && selectedCategoryId === category.id ? (
+              {/* {isCategoryExpanded && selectedCategoryId === category.id ? (
                 <ul>
                   {categories1.map((subCategory) =>
                     subCategory.category === category.id ? (
                       <div key={subCategory.id} className="sub-categories">
-                        <li>{subCategory.sub_category_name}
+                        <li> <h2>{subCategory.sub_category_name}</h2>
+                        <button
+                          className="delete-btn-sub-cate"
+                          onClick={() => handleDelete1(subCategory.id)}
+                        >
+                          <FontAwesomeIcon icon={faTrash} />
+                        </button> */}
 
                           {/* THIS PLACE to add Sub Cat Code */}
 
 
-                          <button
+                          {/* <button
                             className="exp-subcat-btn"
                             onClick={() => {
                               setSelectedSubCategoryId(subCategory.id);
                               setIsSubCategoryExpanded((prev) =>
-                                prev && selectedCategoryId === subCategory.id ? false : true
+                                prev && selectedSubCategoryId === subCategory.id ? false : true
                               );
                             }}
                           >
@@ -328,20 +337,18 @@ function Listings() {
                               }
                             />
                           </button>
-                          <button className="delete-btn-category" onClick={() => handleDelete(subCategory.id)}>
-                            <FontAwesomeIcon icon={faTrash} />
-                          </button>
+                         
 
                           {isSubCategoryExpanded && selectedSubCategoryId === subCategory.id ? (
                             <ul>
                               {categories2.map((subSubCategory) =>
                                 subSubCategory.sub_category === subCategory.id ? (
                                   <div key={subSubCategory.id} className="sub-categories">
-                                    <li>{subSubCategory.sub_sub_category_name}
+                                    <li>{subSubCategory.sub_sub_category_name} */}
 
                                       {/* THIS PLACE to add Sub Cat Codes */}
 
-                                    </li>
+                                    {/* </li>
                                     <button
                                       className="sub-sub-cat-delete-btn"
                                       onClick={() => handleDelete2(subSubCategory.id)}
@@ -415,18 +422,13 @@ function Listings() {
                                 </div>
                               )}
                             </ul>
-                          ) : null}
+                          ) : null} */}
 
 
                           {/* This place subcat end */}
 
-                        </li>
-                        <button
-                          className="delete-btn-sub-cat"
-                          onClick={() => handleDelete1(subCategory.id)}
-                        >
-                          <FontAwesomeIcon icon={faTrash} />
-                        </button>
+                        {/* </li>
+                        
 
 
 
@@ -494,7 +496,7 @@ function Listings() {
                     </div>
                   )}
                 </ul>
-              ) : null}
+              ) : null} */}
             </div>
           ))}
         </ul>
